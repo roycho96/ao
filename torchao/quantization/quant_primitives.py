@@ -717,6 +717,7 @@ def _quantize_affine_no_zero_point_no_dtype_cast(
     return quant
 
 
+@torch.no_grad()
 def dequantize_affine(
     input: torch.Tensor,
     block_size: Tuple[int, ...],
@@ -1409,6 +1410,7 @@ def _choose_qparams_affine_dont_preserve_zero(
 
 
 # TODO: lower this op to custom op library
+@torch.no_grad()
 def choose_qparams_affine_with_min_max(
     min_val: torch.Tensor,
     max_val: torch.Tensor,
